@@ -4,36 +4,31 @@
 
 struct node
 {
-  char name[16];
-  struct node * next;
+  char name[16]; //name is a pointer with space for 16 chars
+  struct node * next; //pointer to next node
 };
 
 void print_list(struct node * link)
 {
-  while (link)
+  while (link) //while the pointer points somewhere
   {
-    printf("%s->", link->name);
-    link = link->next;
+    printf("%s->", link->name); //print it + arrow
+    link = link->next; //go to the next val
   }
-  printf("NULL\n");
+  printf("NULL\n"); //indicates end of list
 }
 struct node * insert_front(struct node * link, char * new_name)
 {
   struct node * ptr = malloc(sizeof(struct node));
-  strcpy(ptr->name, new_name);
-  ptr->next = link;
-  return ptr;
+  //allocate memory for a new struct
+  strcpy(ptr->name, new_name); //put the name in its place
+  ptr->next = link; //put the pointer to the next node in its place
+  return ptr; //return new front
 }
 struct node * free_list(struct node * front)
 {
-  if (front->next)
-  {
-    free_list(front->next);
-    free(front);
-  }
-  else
-  {
-    free(front);
-  }
-  return front;
+  if (front->next) //if this isn't the last node
+    free_list(front->next); //free the next one
+  free(front); //then free itself
+  return front; //i don't think I used this properly/at all
 }
