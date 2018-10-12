@@ -16,6 +16,6 @@ int main()
     ptr = insert_front(ptr, letras[i]); //point to the new front once data added
     print_list(ptr); //print the list we have
   }
-  free_list(ptr); //discard of the heap storage
+  printf("And this is the result of garbage collection (the pointer to the front): %p\n", free_list(ptr)); //discard of the heap storage
   return 0;
 }

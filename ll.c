@@ -30,5 +30,5 @@ struct node * free_list(struct node * front)
   if (front->next) //if this isn't the last node
     free_list(front->next); //free the next one
   free(front); //then free itself
-  return front; //i don't think I used this properly/at all
+  return NULL; //i don't think I used this properly/at all
 }
